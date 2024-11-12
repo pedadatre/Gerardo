@@ -19,13 +19,39 @@ header {
     width: 100%;
     z-index: 1000;
 }
-p { 
+
+#log1 { 
     text-align: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-shadow: 10px 0px 10px #FF69B4;
     font-size: 25px;
-
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#log2 {
+    text-align: center;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#log2 span {
+    display: inline-block;
+    transition: transform 0.1s ease, color 0.1s ease;
+    transition-delay: calc(var(--index) * 0.01s);
+}
+
+#log2:hover span {
+    color: #FF1493;
+    transform: translateY(-1.6px);
+}
+
 
 main {
     display: flex;
