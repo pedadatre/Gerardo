@@ -5,6 +5,7 @@ body {
         color: #333;
         margin: 20px;
     }
+
     .container {
         max-width: 600px;
         margin: auto;
@@ -13,26 +14,31 @@ body {
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     .auth-info {
         text-align: right;
         margin-bottom: 20px;
     }
+    
     .auth-info a {
         color: #007bff;
         text-decoration: none;
         margin-left: 10px;
     }
-    form {
+
+form {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
-    input[type="file"] {
+
+input[type="file"] {
         padding: 8px;
         border: 1px solid #ddd;
         border-radius: 4px;
     }
-    input[type="submit"] {
+
+input[type="submit"] {
         background-color: #007bff;
         color: #fff;
         padding: 10px;
@@ -41,12 +47,15 @@ body {
         cursor: pointer;
         font-size: 16px;
     }
-    input[type="submit"]:hover {
+
+input[type="submit"]:hover {
         background-color: #0056b3;
     }
+
     .file-list {
         margin-top: 20px;
     }
+
     .file-item {
         display: flex;
         justify-content: space-between;
@@ -57,16 +66,19 @@ body {
         border-radius: 4px;
         margin-bottom: 8px;
     }
+
     .file-item a {
         color: #007bff;
         text-decoration: none;
     }
+
     .delete-link {
         color: #dc3545;
         font-weight: bold;
         text-decoration: none;
         margin-left: 20px;
     }
+
     .delete-link:hover {
         color: #a71d2a;
     }

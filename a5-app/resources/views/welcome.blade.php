@@ -26,7 +26,6 @@
                 <a href="/download/{{$fichero->id}}">
                 @endcan
                     {{$fichero->name}}
-                
                 </a></p>
                 @can('delete', $fichero)
                 <a href="/delete/{{$fichero->id}}" class="delete-link">Borrar</a>
@@ -34,5 +33,7 @@
             </div>
         @endforeach
         </div>
+        <form type='get' action=
+        <input name="Search" type="search" placeholder="Ficheros a buscar"/>
     </div>
 </body>

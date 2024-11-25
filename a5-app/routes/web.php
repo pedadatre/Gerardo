@@ -91,3 +91,4 @@ Route::post('/register', function(Request $request){
 
         return redirect('/')->with('success', 'El usuario se cμlëo. Pechurina con papaaaaa!!');
 });
+Route::get
