@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\FileController;
 // Muestra la vista principal con todos los archivos disponibles
 
 Route::get('/', function () {
@@ -45,13 +47,20 @@ Route::get('/logout', function(Request $request){
 });
 
 // Guarda el archivo subido y sus detalles en la base de datos, asociado al usuario autenticado
-Route::post('/upload', function(Request $request){
-    $fichero = new Fichero();
+Route::post('/upload', function(Request $request) {
+    $request->validate([
+        'uploader_file' => 'required|file|mimes:jpg,png,pdf|max:2048',
+    ]);
 
-    $fichero->path = $request->file('uploader_file')->store();;
+    // Guardar el archivo en el directorio storage/app/public
+    $path = $request->file('uploader_file')->store('public/');
+
+    $fichero = new Fichero();
     $fichero->name = $request->file('uploader_file')->getClientOriginalName();
-    $fichero->user_id = Auth::user()->id;
+    $fichero->path = str_replace('public/', '', $path); // Guardar la ruta relativa
+    $fichero->user_id = auth()->id();
     $fichero->save();
+
     return redirect('/');
 });
 
@@ -91,3 +100,8 @@ Route::post('/register', function(Request $request){
 
         return redirect('/')->with('success', 'El usuario se cμlëo. Pechurina con papaaaaa!!');
 });
+
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+Route::get('/file-url/{id}', [FileController::class, 'getFileUrl'])->name('file.url');
