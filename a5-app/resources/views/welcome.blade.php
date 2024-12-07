@@ -28,21 +28,21 @@
         @endauth
         <div id="file-preview"></div>
         <div class="file-list">
-            @foreach ($ficheros as $fichero)
-            <div class="file-item">
-                @can('download', $fichero)
-                <a href="/download/{{$fichero->id}}">
-                @endcan
-                    {{$fichero->name}}
-                </a>
-                @can('delete', $fichero)
-                <a href="/delete/{{$fichero->id}}" class="delete-link">Borrar</a>
-                @endcan
-                <button type="button" class="view-button" data-file-url="{{ asset('storage/' . $fichero->path) }}">Ver</button>
-                <!-- Enlace temporal para verificar la URL del archivo -->
-                <a href="{{ asset('storage/' . $fichero->path) }}" target="_blank">Ver Archivo</a>
-            </div>
-            @endforeach
+        @foreach ($ficheros as $fichero)
+        <div class="file-item">
+            @can('download', $fichero)
+            <a href="/download/{{$fichero->id}}">
+            @endcan
+                {{$fichero->name}}
+            </a>
+            @can('delete', $fichero)
+            <a href="/delete/{{$fichero->id}}" class="delete-link">Borrar</a>
+            @endcan
+            <button type="button" class="view-button" data-file-url="{{ asset('storage/' . $fichero->path) }}">Ver</button>
+            <!-- Enlace temporal para verificar la URL del archivo -->
+            <a href="{{ asset('storage/' . $fichero->path) }}" target="_blank">Ver Archivo</a>
+        </div>
+@endforeach
         </div>
         <form id="search-form" method="GET" action="{{ route('search') }}">
             <input type="text" name="query" id="search-query" placeholder="Buscar...">

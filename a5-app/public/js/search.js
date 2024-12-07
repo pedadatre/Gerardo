@@ -38,4 +38,22 @@ $(document).ready(function() {
             previewContainer.append('<p>Vista previa no disponible para este tipo de archivo.</p>');
         }
     });
+
+    $('#search-form').on('submit', function(e) {
+        e.preventDefault(); // Evitar el envío del formulario por defecto
+
+        var query = $('#search-query').val();
+
+        $.ajax({
+            url: $(this).attr('action'),
+            method: 'GET',
+            data: { query: query },
+            success: function(response) {
+                $('#search-results').html(response);
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
 });

@@ -49,7 +49,7 @@ Route::get('/logout', function(Request $request){
 // Guarda el archivo subido y sus detalles en la base de datos, asociado al usuario autenticado
 Route::post('/upload', function(Request $request) {
     $request->validate([
-        'uploader_file' => 'required|file|mimes:jpg,png,pdf|max:2048',
+        'uploader_file' => 'required|file|mimes:jpg,png,pdf|max:4096',
     ]);
 
     // Guardar el archivo en el directorio storage/app/public
@@ -57,7 +57,7 @@ Route::post('/upload', function(Request $request) {
 
     $fichero = new Fichero();
     $fichero->name = $request->file('uploader_file')->getClientOriginalName();
-    $fichero->path = str_replace('public/', '', $path); // Guardar la ruta relativa
+    $fichero->path = $path; // Guardar la ruta completa
     $fichero->user_id = auth()->id();
     $fichero->save();
 
